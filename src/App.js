@@ -21,7 +21,6 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import CodeIcon from "@mui/icons-material/Code";
 import { useState } from "react";
 import Input from "@mui/material/Input";
-import { ListItem } from "@mui/material";
 
 export default function NestedList() {
   const [open, setOpen] = React.useState(true);
