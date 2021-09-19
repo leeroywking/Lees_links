@@ -92,7 +92,8 @@ export default function NestedList() {
                   placeholder="Enter word to complete and hit enter"
                   multiline={true}
                   onKeyDown={(e) => {
-                    if (e.code === "Enter") {
+                    console.log(e)
+                    if (e.key === "Enter") {
                       e.preventDefault();
                       window.location.href = `https://oapi.herokuapp.com/autocomplete/${autoCompleteText.toLowerCase()}`;
                     }
@@ -120,7 +121,7 @@ export default function NestedList() {
                   placeholder="Enter pokemon name and hit enter"
                   multiline={true}
                   onKeyDown={(e) => {
-                    if (e.code === "Enter") {
+                    if (e.key === "Enter") {
                       e.preventDefault();
                       window.location.href = `https://poke-butts.herokuapp.com/${pokename.toLowerCase()}`;
                     }
