@@ -112,7 +112,7 @@ export default function NestedList() {
             <ListItemIcon>
               <Pokeball />
             </ListItemIcon>
-            <ListItemText primary="Poke butts" />
+            <ListItemText primary="Pokébutts" />
           </ListItemButton>
           {pokeFieldOpen ? (
             <ListItemButton>
