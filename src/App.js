@@ -19,13 +19,19 @@ import TimelineIcon from "@mui/icons-material/Timeline";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import CodeIcon from "@mui/icons-material/Code";
+import { useState } from "react";
+import Input from "@mui/material/Input";
+import { ListItem } from "@mui/material";
 
 export default function NestedList() {
   const [open, setOpen] = React.useState(true);
-
+  const [pokeFieldOpen, setPokeFieldOpen] = useState(false);
+  const [autoCompleteOpen, setAutoCompleteOpen] = useState(false);
+  const [pokename, setPokeName] = useState("");
   const handleClick = () => {
     setOpen(!open);
   };
+  const [autoCompleteText, setAutoCompleteText] = useState("");
 
   return (
     <List
@@ -70,25 +76,61 @@ export default function NestedList() {
             <ListItemText primary="Free Mazes for life!" />
           </ListItemButton>
           <ListItemButton
-            component="a"
+            // component="a"
             href="https://oapi.herokuapp.com/autocomplete/tre"
             sx={{ pl: 4 }}
+            onClick={() => setAutoCompleteOpen(!autoCompleteOpen)}
           >
             <ListItemIcon>
               <TextRotationNone />
             </ListItemIcon>
             <ListItemText primary="Auto complete" />
           </ListItemButton>
+          {autoCompleteOpen ? (
+            <ListItemButton>
+              <ListItemText>
+                <Input
+                  placeholder="Enter word to complete and hit enter"
+                  multiline={true}
+                  onKeyDown={(e) => {
+                    if (e.code === "Enter") {
+                      e.preventDefault();
+                      window.location.href = `https://oapi.herokuapp.com/autocomplete/${autoCompleteText.toLowerCase()}`;
+                    }
+                  }}
+                  onChange={(e) => setAutoCompleteText(e.target.value)}
+                />
+              </ListItemText>
+            </ListItemButton>
+          ) : null}
           <ListItemButton
-            component="a"
-            href="https://oapi.herokuapp.com/autocomplete/tre"
+            // component="a"
+            href="https://poke-butts.herokuapp.com/charmander"
             sx={{ pl: 4 }}
+            onClick={() => setPokeFieldOpen(!pokeFieldOpen)}
           >
             <ListItemIcon>
               <Pokeball />
             </ListItemIcon>
             <ListItemText primary="Poke butts" />
           </ListItemButton>
+          {pokeFieldOpen ? (
+            <ListItemButton>
+              <ListItemText>
+                <Input
+                  placeholder="Enter pokemon name and hit enter"
+                  multiline={true}
+                  onKeyDown={(e) => {
+                    if (e.code === "Enter") {
+                      e.preventDefault();
+                      window.location.href = `https://poke-butts.herokuapp.com/${pokename.toLowerCase()}`;
+                    }
+                  }}
+                  onChange={(e) => setPokeName(e.target.value)}
+                />
+              </ListItemText>
+            </ListItemButton>
+          ) : null}
           <ListItemButton
             component="a"
             href="https://github.com/leeroywking"
