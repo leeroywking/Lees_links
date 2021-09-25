@@ -55,6 +55,12 @@ export default function NestedList() {
         </ListItemIcon>
         <ListItemText primary="Twitter" />
       </ListItemButton>
+      <ListItemButton component="a" href="https://www.twitch.tv/einraw">
+        <ListItemIcon>
+          <TwitterIcon />
+        </ListItemIcon>
+        <ListItemText primary="Twitch" />
+      </ListItemButton>
       <ListItemButton onClick={handleClick}>
         <ListItemIcon>
           <CodeIcon />
@@ -92,7 +98,7 @@ export default function NestedList() {
                   placeholder="Enter word to complete and hit enter"
                   multiline={true}
                   onKeyDown={(e) => {
-                    console.log(e)
+                    console.log(e);
                     if (e.key === "Enter") {
                       e.preventDefault();
                       window.location.href = `https://oapi.herokuapp.com/autocomplete/${autoCompleteText.toLowerCase()}`;
