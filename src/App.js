@@ -39,7 +39,7 @@ export default function NestedList() {
       aria-labelledby="nested-list-subheader"
       subheader={
         <ListSubheader component="div" id="nested-list-subheader">
-          Links for Lee-Roy King
+          Links for Lee-Roy
         </ListSubheader>
       }
     >
