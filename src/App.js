@@ -21,6 +21,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import CodeIcon from "@mui/icons-material/Code";
 import { useState } from "react";
 import Input from "@mui/material/Input";
+import { Icon } from "@iconify/react";
 
 export default function NestedList() {
   const [open, setOpen] = React.useState(true);
@@ -57,9 +58,15 @@ export default function NestedList() {
       </ListItemButton>
       <ListItemButton component="a" href="https://www.twitch.tv/einraw">
         <ListItemIcon>
-          <TwitterIcon />
+          <Icon icon="mdi:twitch" />
         </ListItemIcon>
         <ListItemText primary="Twitch" />
+      </ListItemButton>
+      <ListItemButton component="a" href="https://www.discord.gg/8WNPJB83">
+        <ListItemIcon>
+          <Icon icon="mdi:discord" />
+        </ListItemIcon>
+        <ListItemText primary="Coven of the Red Bear" />
       </ListItemButton>
       <ListItemButton onClick={handleClick}>
         <ListItemIcon>
@@ -147,8 +154,23 @@ export default function NestedList() {
             </ListItemIcon>
             <ListItemText primary="Github" />
           </ListItemButton>
+          <ListItemButton
+            component="a"
+            href="https://bucket-pasta.com"
+            sx={{ pl: 4 }}
+          >
+            <ListItemIcon>
+              <Icon icon="mdi:bucket-outline" />
+            </ListItemIcon>
+            <ListItemText primary="Bucket Pasta" />
+          </ListItemButton>
         </List>
       </Collapse>
     </List>
   );
 }
+
+/*
+import { Icon } from '@iconify/react';
+<Icon icon="mdi:discord" />
+*/
