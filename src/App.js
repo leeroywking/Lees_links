@@ -62,7 +62,10 @@ export default function NestedList() {
         </ListItemIcon>
         <ListItemText primary="Twitch" />
       </ListItemButton>
-      <ListItemButton component="a" href="https://www.discord.gg/8WNPJB83">
+      <ListItemButton
+        component="a"
+        href="https://discord.gg/covenoftheredbeard"
+      >
         <ListItemIcon>
           <Icon icon="mdi:discord" />
         </ListItemIcon>
