@@ -56,16 +56,25 @@ export default function NestedList() {
         </ListItemIcon>
         <ListItemText primary="Twitter" />
       </ListItemButton>
+      <ListItemButton
+        component="a"
+        href="https://open.spotify.com/user/12138314850?si=bc8720525d83485c"
+      >
+        <ListItemIcon>
+          <Icon
+            icon="akar-icons:spotify-fill"
+            style={{ "font-size": "1.5em" }}
+          />
+        </ListItemIcon>
+        <ListItemText primary="Spotify" />
+      </ListItemButton>
       <ListItemButton component="a" href="https://www.twitch.tv/einraw">
         <ListItemIcon>
           <Icon icon="mdi:twitch" />
         </ListItemIcon>
         <ListItemText primary="Twitch" />
       </ListItemButton>
-      <ListItemButton
-        component="a"
-        href="https://discord.gg/covenoftheredbear"
-      >
+      <ListItemButton component="a" href="https://discord.gg/covenoftheredbear">
         <ListItemIcon>
           <Icon icon="mdi:discord" />
         </ListItemIcon>
@@ -163,7 +172,10 @@ export default function NestedList() {
             sx={{ pl: 4 }}
           >
             <ListItemIcon>
-              <Icon icon="mdi:bucket-outline" />
+              <Icon
+                icon="mdi:bucket-outline"
+                style={{ "font-size": "1.5em" }}
+              />
             </ListItemIcon>
             <ListItemText primary="Bucket Pasta" />
           </ListItemButton>
