@@ -44,6 +44,17 @@ export default function NestedList() {
         </ListSubheader>
       }
     >
+      {/* https://www.tiktok.com/@exmachinaexmilitary */}
+      {/* cib:tiktok */}
+      <ListItemButton
+        component="a"
+        href="https://www.tiktok.com/@exmachinaexmilitary"
+      >
+        <ListItemIcon>
+          <Icon icon="cib:tiktok" style={{ "font-size": "1.5em" }} />
+        </ListItemIcon>
+        <ListItemText primary="TikTok" />
+      </ListItemButton>
       <ListItemButton component="a" href="https://www.instagram.com/pogofwar/">
         <ListItemIcon>
           <InstagramIcon />
@@ -189,3 +200,4 @@ export default function NestedList() {
 import { Icon } from '@iconify/react';
 <Icon icon="mdi:discord" />
 */
+// https://www.tiktok.com/@exmachinaexmilitary
