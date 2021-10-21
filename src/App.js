@@ -125,13 +125,13 @@ export default function NestedList() {
         primary="Twitch"
         component="a"
         href="https://www.twitch.tv/einraw"
-        icon={<Icon icon="mdi:twitch" />}
+        icon={<Icon icon="mdi:twitch" style={{ "font-size": "1.5em" }} />}
       />
       <LinkListItem
         primary="Coven of the Red Bear"
         component="a"
         href="https://discord.gg/covenoftheredbear"
-        icon={<Icon icon="mdi:discord" />}
+        icon={<Icon icon="mdi:discord" style={{ "font-size": "1.5em" }} />}
       />
       <LinkListItem
         primary="Software Developer stuff"
