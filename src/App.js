@@ -22,15 +22,29 @@ import CodeIcon from "@mui/icons-material/Code";
 import { useState } from "react";
 import Input from "@mui/material/Input";
 import { Icon } from "@iconify/react";
+import LinkListItem from "./LinkListItem";
+import { playlist, nowListening } from "./getCurrentlyListening";
 
 export default function NestedList() {
-  const [open, setOpen] = React.useState(true);
+  const [openSoftware, setOpenSoftware] = React.useState(false);
+  const [openSpotify, setOpenSpotify] = React.useState(false);
   const [pokeFieldOpen, setPokeFieldOpen] = useState(false);
   const [autoCompleteOpen, setAutoCompleteOpen] = useState(false);
   const [pokename, setPokeName] = useState("");
-  const handleClick = () => {
-    setOpen(!open);
+  const [currentlyListening, setCurrentlyListening] = React.useState({});
+  const [currentPlaylist, setCurrentPlaylist] = React.useState({});
+  const handleClickSoftware = () => setOpenSoftware(!openSoftware);
+  const handleClickSpotify = () => {
+    nowListening().then((data) => {
+      setCurrentlyListening(data);
+      playlist(data.context.href).then((data2) => {
+        setCurrentPlaylist(data2);
+      });
+    });
+
+    setOpenSpotify(!openSpotify);
   };
+
   const [autoCompleteText, setAutoCompleteText] = useState("");
 
   return (
@@ -44,83 +58,107 @@ export default function NestedList() {
         </ListSubheader>
       }
     >
-      {/* https://www.tiktok.com/@exmachinaexmilitary */}
-      {/* cib:tiktok */}
-      <ListItemButton
+      <LinkListItem
+        primary="TikTok"
         component="a"
         href="https://www.tiktok.com/@exmachinaexmilitary"
-      >
-        <ListItemIcon>
-          <Icon icon="cib:tiktok" style={{ "font-size": "1.5em" }} />
-        </ListItemIcon>
-        <ListItemText primary="TikTok" />
-      </ListItemButton>
-      <ListItemButton component="a" href="https://www.instagram.com/pogofwar/">
-        <ListItemIcon>
-          <InstagramIcon />
-        </ListItemIcon>
-        <ListItemText primary="Instagram" />
-      </ListItemButton>
-      <ListItemButton component="a" href="https://twitter.com/LeeRoyKing13">
-        <ListItemIcon>
-          <TwitterIcon />
-        </ListItemIcon>
-        <ListItemText primary="Twitter" />
-      </ListItemButton>
-      <ListItemButton
+        icon={<Icon icon="cib:tiktok" style={{ "font-size": "1.5em" }} />}
+      />
+
+      <LinkListItem
+        primary="Instagram"
         component="a"
+        href="https://www.instagram.com/pogofwar/"
+        icon={<InstagramIcon />}
+      />
+      <LinkListItem
+        primary="Twitter"
+        component="a"
+        href="https://twitter.com/LeeRoyKing13"
+        icon={<TwitterIcon />}
+      />
+      <LinkListItem
+        primary="Spotify Now Playing"
+        // component="a"
         href="https://open.spotify.com/user/12138314850?si=bc8720525d83485c"
-      >
-        <ListItemIcon>
+        icon={
           <Icon
             icon="akar-icons:spotify-fill"
             style={{ "font-size": "1.5em" }}
           />
-        </ListItemIcon>
-        <ListItemText primary="Spotify" />
-      </ListItemButton>
-      <ListItemButton component="a" href="https://www.twitch.tv/einraw">
-        <ListItemIcon>
-          <Icon icon="mdi:twitch" />
-        </ListItemIcon>
-        <ListItemText primary="Twitch" />
-      </ListItemButton>
-      <ListItemButton component="a" href="https://discord.gg/covenoftheredbear">
-        <ListItemIcon>
-          <Icon icon="mdi:discord" />
-        </ListItemIcon>
-        <ListItemText primary="Coven of the Red Bear" />
-      </ListItemButton>
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <CodeIcon />
-        </ListItemIcon>
-        <ListItemText primary="Software Developer stuff" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
+        }
+        onClick={handleClickSpotify}
+      >
+        {openSpotify ? <ExpandLess /> : <ExpandMore />}
+      </LinkListItem>
+      <Collapse in={openSpotify} timeout="auto" unmountOnExit>
+        {currentPlaylist.name ? (
+          <LinkListItem
+            primary={`Playlist: ${currentPlaylist.name}`}
+            component="a"
+            href={currentPlaylist.external_urls.spotify}
+            icon={
+              <Icon
+                icon="akar-icons:spotify-fill"
+                style={{ "font-size": "1.5em" }}
+              />
+            }
+            sx={{ pl: 4 }}
+          />
+        ) : null}
+        {currentlyListening.context ? (
+          <LinkListItem
+            primary={`Track: ${currentlyListening.item.name}`}
+            component="a"
+            href={currentlyListening.context.external_urls.spotify}
+            icon={
+              <Icon
+                icon="akar-icons:spotify-fill"
+                style={{ "font-size": "1.5em" }}
+              />
+            }
+            sx={{ pl: 4 }}
+          />
+        ) : null}
+      </Collapse>
+      <LinkListItem
+        primary="Twitch"
+        component="a"
+        href="https://www.twitch.tv/einraw"
+        icon={<Icon icon="mdi:twitch" />}
+      />
+      <LinkListItem
+        primary="Coven of the Red Bear"
+        component="a"
+        href="https://discord.gg/covenoftheredbear"
+        icon={<Icon icon="mdi:discord" />}
+      />
+      <LinkListItem
+        primary="Software Developer stuff"
+        // component=""
+        onClick={handleClickSoftware}
+        href="https://discord.gg/covenoftheredbear"
+        icon={<CodeIcon />}
+      >
+        {openSoftware ? <ExpandLess /> : <ExpandMore />}
+      </LinkListItem>
+      <Collapse in={openSoftware} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItemButton
+          <LinkListItem
+            primary="Free Mazes for life!"
             component="a"
             href="https://maze-maker.herokuapp.com/"
+            icon={<TimelineIcon />}
             sx={{ pl: 4 }}
-          >
-            <ListItemIcon>
-              <TimelineIcon />
-            </ListItemIcon>
-            <ListItemText primary="Free Mazes for life!" />
-          </ListItemButton>
-          <ListItemButton
-            // component="a"
-            href="https://oapi.herokuapp.com/autocomplete/tre"
-            sx={{ pl: 4 }}
+          />
+          <LinkListItem
+            primary="Auto complete"
+            component="a"
             onClick={() => setAutoCompleteOpen(!autoCompleteOpen)}
-          >
-            <ListItemIcon>
-              <TextRotationNone />
-            </ListItemIcon>
-            <ListItemText primary="Auto complete" />
-          </ListItemButton>
+            href="https://oapi.herokuapp.com/autocomplete/tre"
+            icon={<TextRotationNone />}
+            sx={{ pl: 4 }}
+          />
           {autoCompleteOpen ? (
             <ListItemButton>
               <ListItemText>
@@ -167,37 +205,28 @@ export default function NestedList() {
               </ListItemText>
             </ListItemButton>
           ) : null}
-          <ListItemButton
+
+          <LinkListItem
+            primary="Github"
             component="a"
             href="https://github.com/leeroywking"
+            icon={<Github />}
             sx={{ pl: 4 }}
-          >
-            <ListItemIcon>
-              <Github />
-            </ListItemIcon>
-            <ListItemText primary="Github" />
-          </ListItemButton>
-          <ListItemButton
+          />
+          <LinkListItem
+            primary="Bucket Pasta"
             component="a"
             href="https://bucket-pasta.com"
-            sx={{ pl: 4 }}
-          >
-            <ListItemIcon>
+            icon={
               <Icon
                 icon="mdi:bucket-outline"
                 style={{ "font-size": "1.5em" }}
               />
-            </ListItemIcon>
-            <ListItemText primary="Bucket Pasta" />
-          </ListItemButton>
+            }
+            sx={{ pl: 4 }}
+          />
         </List>
       </Collapse>
     </List>
   );
 }
-
-/*
-import { Icon } from '@iconify/react';
-<Icon icon="mdi:discord" />
-*/
-// https://www.tiktok.com/@exmachinaexmilitary
