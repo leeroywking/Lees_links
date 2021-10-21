@@ -62,33 +62,11 @@ export default function NestedList() {
         primary="TikTok"
         component="a"
         href="https://www.tiktok.com/@exmachinaexmilitary"
-<<<<<<< HEAD
         icon={<Icon icon="cib:tiktok" style={{ "font-size": "1.5em" }} />}
       />
 
       <LinkListItem
         primary="Instagram"
-=======
-      >
-        <ListItemIcon>
-          <Icon icon="cib:tiktok" style={{ "font-size": "1.5em" }} />
-        </ListItemIcon>
-        <ListItemText primary="TikTok" />
-      </ListItemButton>
-      <ListItemButton component="a" href="https://www.instagram.com/pogofwar/">
-        <ListItemIcon>
-          <InstagramIcon />
-        </ListItemIcon>
-        <ListItemText primary="Instagram" />
-      </ListItemButton>
-      <ListItemButton component="a" href="https://twitter.com/LeeRoyExMachina">
-        <ListItemIcon>
-          <TwitterIcon />
-        </ListItemIcon>
-        <ListItemText primary="Twitter" />
-      </ListItemButton>
-      <ListItemButton
->>>>>>> a2eadcf582233b6090cba4535fab0a1dbc6f9e02
         component="a"
         href="https://www.instagram.com/pogofwar/"
         icon={<InstagramIcon />}
@@ -96,7 +74,7 @@ export default function NestedList() {
       <LinkListItem
         primary="Twitter"
         component="a"
-        href="https://twitter.com/LeeRoyKing13"
+        href="https://twitter.com/LeeRoyExMachina"
         icon={<TwitterIcon />}
       />
       <LinkListItem
