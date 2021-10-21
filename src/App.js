@@ -23,27 +23,27 @@ import { useState } from "react";
 import Input from "@mui/material/Input";
 import { Icon } from "@iconify/react";
 import LinkListItem from "./LinkListItem";
-import { playlist, nowListening } from "./getCurrentlyListening";
+// import { playlist, nowListening } from "./getCurrentlyListening";
 
 export default function NestedList() {
   const [openSoftware, setOpenSoftware] = React.useState(false);
-  const [openSpotify, setOpenSpotify] = React.useState(false);
+  // const [openSpotify, setOpenSpotify] = React.useState(false);
   const [pokeFieldOpen, setPokeFieldOpen] = useState(false);
   const [autoCompleteOpen, setAutoCompleteOpen] = useState(false);
   const [pokename, setPokeName] = useState("");
-  const [currentlyListening, setCurrentlyListening] = React.useState({});
-  const [currentPlaylist, setCurrentPlaylist] = React.useState({});
   const handleClickSoftware = () => setOpenSoftware(!openSoftware);
-  const handleClickSpotify = () => {
-    nowListening().then((data) => {
-      setCurrentlyListening(data);
-      playlist(data.context.href).then((data2) => {
-        setCurrentPlaylist(data2);
-      });
-    });
+  // const [currentlyListening, setCurrentlyListening] = React.useState({});
+  // const [currentPlaylist, setCurrentPlaylist] = React.useState({});
+  // const handleClickSpotify = () => {
+  //   nowListening().then((data) => {
+  //     setCurrentlyListening(data);
+  //     playlist(data.context.href).then((data2) => {
+  //       setCurrentPlaylist(data2);
+  //     });
+  //   });
 
-    setOpenSpotify(!openSpotify);
-  };
+  //   setOpenSpotify(!openSpotify);
+  // };
 
   const [autoCompleteText, setAutoCompleteText] = useState("");
 
@@ -79,7 +79,7 @@ export default function NestedList() {
       />
       <LinkListItem
         primary="Spotify Now Playing"
-        // component="a"
+        component="a"
         href="https://open.spotify.com/user/12138314850?si=bc8720525d83485c"
         icon={
           <Icon
@@ -87,11 +87,11 @@ export default function NestedList() {
             style={{ "font-size": "1.5em" }}
           />
         }
-        onClick={handleClickSpotify}
+        // onClick={handleClickSpotify}
       >
-        {openSpotify ? <ExpandLess /> : <ExpandMore />}
+        {/* {openSpotify ? <ExpandLess /> : <ExpandMore />} */}
       </LinkListItem>
-      <Collapse in={openSpotify} timeout="auto" unmountOnExit>
+      {/* <Collapse in={openSpotify} timeout="auto" unmountOnExit>
         {currentPlaylist.name ? (
           <LinkListItem
             primary={`Playlist: ${currentPlaylist.name}`}
@@ -120,7 +120,7 @@ export default function NestedList() {
             sx={{ pl: 4 }}
           />
         ) : null}
-      </Collapse>
+      </Collapse> */}
       <LinkListItem
         primary="Twitch"
         component="a"
