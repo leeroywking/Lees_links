@@ -23,27 +23,30 @@ import { useState } from "react";
 import Input from "@mui/material/Input";
 import { Icon } from "@iconify/react";
 import LinkListItem from "./LinkListItem";
-// import { playlist, nowListening } from "./getCurrentlyListening";
+import { playlist, nowListening } from "./getCurrentlyListening";
 
 export default function NestedList() {
   const [openSoftware, setOpenSoftware] = React.useState(false);
-  // const [openSpotify, setOpenSpotify] = React.useState(false);
+  const [openSpotify, setOpenSpotify] = React.useState(false);
   const [pokeFieldOpen, setPokeFieldOpen] = useState(false);
   const [autoCompleteOpen, setAutoCompleteOpen] = useState(false);
   const [pokename, setPokeName] = useState("");
   const handleClickSoftware = () => setOpenSoftware(!openSoftware);
-  // const [currentlyListening, setCurrentlyListening] = React.useState({});
-  // const [currentPlaylist, setCurrentPlaylist] = React.useState({});
-  // const handleClickSpotify = () => {
-  //   nowListening().then((data) => {
-  //     setCurrentlyListening(data);
-  //     playlist(data.context.href).then((data2) => {
-  //       setCurrentPlaylist(data2);
-  //     });
-  //   });
+  const [currentlyListening, setCurrentlyListening] = React.useState({});
+  const [currentPlaylist, setCurrentPlaylist] = React.useState({});
+  const handleClickSpotify = () => {
+    nowListening()
+      .then((data) => {
+        setCurrentlyListening(data);
+        playlist(data.context.href, data.token).then((data2) => {
+          console.log({ currentlyListening });
+          setCurrentPlaylist(data2);
+        });
+      })
+      .catch((err) => console.error(err));
 
-  //   setOpenSpotify(!openSpotify);
-  // };
+    setOpenSpotify(!openSpotify);
+  };
 
   const [autoCompleteText, setAutoCompleteText] = useState("");
 
@@ -78,8 +81,8 @@ export default function NestedList() {
         icon={<TwitterIcon />}
       />
       <LinkListItem
-        primary="Spotify Now Playing"
-        component="a"
+        primary="Spotify"
+        // component="a"
         href="https://open.spotify.com/user/12138314850?si=bc8720525d83485c"
         icon={
           <Icon
@@ -87,16 +90,21 @@ export default function NestedList() {
             style={{ "font-size": "1.5em" }}
           />
         }
-        // onClick={handleClickSpotify}
+        onClick={handleClickSpotify}
       >
-        {/* {openSpotify ? <ExpandLess /> : <ExpandMore />} */}
+        {openSpotify ? <ExpandLess /> : <ExpandMore />}
       </LinkListItem>
-      {/* <Collapse in={openSpotify} timeout="auto" unmountOnExit>
-        {currentPlaylist.name ? (
+      <Collapse in={openSpotify} timeout="auto" unmountOnExit>
+        {currentlyListening &&
+        currentPlaylist &&
+        currentPlaylist.name &&
+        currentlyListening.token ? (
           <LinkListItem
             primary={`Playlist: ${currentPlaylist.name}`}
             component="a"
-            href={currentPlaylist.external_urls.spotify}
+            href={
+              (currentPlaylist.external_urls.spotify, currentlyListening.token)
+            }
             icon={
               <Icon
                 icon="akar-icons:spotify-fill"
@@ -106,7 +114,7 @@ export default function NestedList() {
             sx={{ pl: 4 }}
           />
         ) : null}
-        {currentlyListening.context ? (
+        {currentlyListening && currentlyListening.item ? (
           <LinkListItem
             primary={`Track: ${currentlyListening.item.name}`}
             component="a"
@@ -115,12 +123,27 @@ export default function NestedList() {
               <Icon
                 icon="akar-icons:spotify-fill"
                 style={{ "font-size": "1.5em" }}
+                sx={{ pl: 4 }}
               />
             }
             sx={{ pl: 4 }}
           />
         ) : null}
-      </Collapse> */}
+
+        <LinkListItem
+          primary="Lee's spotify"
+          component="a"
+          href="https://open.spotify.com/user/12138314850?si=bc8720525d83485c"
+          icon={
+            <Icon
+              icon="akar-icons:spotify-fill"
+              style={{ "font-size": "1.5em" }}
+            />
+          }
+          sx={{ pl: 4 }}
+          onClick={handleClickSpotify}
+        />
+      </Collapse>
       <LinkListItem
         primary="Twitch"
         component="a"
