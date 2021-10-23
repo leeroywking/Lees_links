@@ -12,12 +12,10 @@ const nowListening = async () => {
       },
     })
     .catch((err) => err);
-  // console.log(res.data);
   return res.data;
 };
 
 const playlist = async (playlist_href, token) => {
-  console.log({ token });
   const res = await axios.get(playlist_href, {
     headers: {
       Authorization: `Bearer ${token}`,

@@ -39,7 +39,8 @@ export default function NestedList() {
       .then((data) => {
         setCurrentlyListening(data);
         playlist(data.context.href, data.token).then((data2) => {
-          console.log({ currentlyListening });
+          // console.log({ currentlyListening });
+          console.log({ data2 });
           setCurrentPlaylist(data2);
         });
       })
@@ -102,9 +103,7 @@ export default function NestedList() {
           <LinkListItem
             primary={`Playlist: ${currentPlaylist.name}`}
             component="a"
-            href={
-              (currentPlaylist.external_urls.spotify, currentlyListening.token)
-            }
+            href={currentPlaylist.external_urls.spotify}
             icon={
               <Icon
                 icon="akar-icons:spotify-fill"
