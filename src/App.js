@@ -149,17 +149,17 @@ export default function NestedList() {
         href="https://www.twitch.tv/einraw"
         icon={<Icon icon="mdi:twitch" style={{ "font-size": "1.5em" }} />}
       />
-      <LinkListItem
+      {/* <LinkListItem
         primary="Coven of the Red Bear"
         component="a"
         href="https://discord.gg/covenoftheredbear"
         icon={<Icon icon="mdi:discord" style={{ "font-size": "1.5em" }} />}
-      />
+      /> */}
       <LinkListItem
         primary="Software Developer stuff"
         // component=""
         onClick={handleClickSoftware}
-        href="https://discord.gg/covenoftheredbear"
+        // href="https://discord.gg/covenoftheredbear"
         icon={<CodeIcon />}
       >
         {openSoftware ? <ExpandLess /> : <ExpandMore />}
