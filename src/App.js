@@ -30,8 +30,10 @@ export default function NestedList() {
   const [openSpotify, setOpenSpotify] = React.useState(false);
   const [pokeFieldOpen, setPokeFieldOpen] = useState(false);
   const [autoCompleteOpen, setAutoCompleteOpen] = useState(false);
+  const [openAffiliate, setOpenAffiliate] = useState(false);
   const [pokename, setPokeName] = useState("");
   const handleClickSoftware = () => setOpenSoftware(!openSoftware);
+  const handleClickAffiliate = () => setOpenAffiliate(!openAffiliate);
   const [currentlyListening, setCurrentlyListening] = React.useState({});
   const [currentPlaylist, setCurrentPlaylist] = React.useState({});
   const handleClickSpotify = () => {
@@ -57,7 +59,10 @@ export default function NestedList() {
       component="nav"
       aria-labelledby="nested-list-subheader"
       subheader={
-        <ListSubheader component="div" id="nested-list-subheader">
+        <ListSubheader
+          component="div"
+          id="nested-lismdi:microphone-variantt-subheader"
+        >
           Links for Lee-Roy
         </ListSubheader>
       }
@@ -151,7 +156,7 @@ export default function NestedList() {
       />
       {/* <LinkListItem
         primary="Coven of the Red Bear"
-        component="a"
+        component="a"            mdi:microphone-variant
         href="https://discord.gg/covenoftheredbear"
         icon={<Icon icon="mdi:discord" style={{ "font-size": "1.5em" }} />}
       /> */}
@@ -244,6 +249,40 @@ export default function NestedList() {
                 icon="mdi:bucket-outline"
                 style={{ "font-size": "1.5em" }}
               />
+            }
+            sx={{ pl: 4 }}
+          />
+        </List>
+      </Collapse>
+      <LinkListItem
+        primary="Buy Stuff thats in my videos I guess if you really want to"
+        // component=""
+        onClick={handleClickAffiliate}
+        // href="https://discord.gg/covenoftheredbear"
+        icon={<Icon icon="mdi:cash" style={{ "font-size": "1.5em" }} />}
+      >
+        {openSoftware ? <ExpandLess /> : <ExpandMore />}
+      </LinkListItem>
+      <Collapse in={openAffiliate} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <LinkListItem
+            primary="Blue Yeti Microphone"
+            component="a"
+            href="https://www.amazon.com/gp/product/B00N1YPXW2/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00N1YPXW2&linkCode=as2&tag=exmachina00-20&linkId=4920cc558e42edc164c3cefd65192238"
+            icon={
+              <Icon
+                icon="mdi:microphone-variant"
+                style={{ "font-size": "1.5em" }}
+              />
+            }
+            sx={{ pl: 4 }}
+          />
+          <LinkListItem
+            primary="Audio-Technica ATH-M50X"
+            component="a"
+            href="https://www.amazon.com/gp/product/B00HVLUR86/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00HVLUR86&linkCode=as2&tag=exmachina00-20&linkId=15bd3767f753ad1ddbbc8ebe3aae10f1"
+            icon={
+              <Icon icon="mdi:headphones" style={{ "font-size": "1.5em" }} />
             }
             sx={{ pl: 4 }}
           />
