@@ -123,7 +123,7 @@ export default function NestedList() {
           <LinkListItem
             primary={`Track: ${currentlyListening.item.name}`}
             component="a"
-            href={currentlyListening.context.external_urls.spotify}
+            href={currentlyListening.item.external_urls.spotify}
             icon={
               <Icon
                 icon="akar-icons:spotify-fill"
