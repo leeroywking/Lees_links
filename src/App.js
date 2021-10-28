@@ -40,11 +40,12 @@ export default function NestedList() {
     nowListening()
       .then((data) => {
         setCurrentlyListening(data);
+      if(data.context){
         playlist(data.context.href, data.token).then((data2) => {
           // console.log({ currentlyListening });
           console.log({ data2 });
           setCurrentPlaylist(data2);
-        });
+        })};
       })
       .catch((err) => console.error(err));
 
