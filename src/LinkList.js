@@ -18,7 +18,11 @@ import { useState } from "react";
 import Input from "@mui/material/Input";
 import { Icon } from "@iconify/react";
 import LinkListItem from "./LinkListItem";
+import SvgIcon from "@material-ui/core/SvgIcon";
 import { playlist, nowListening } from "./getCurrentlyListening";
+// import FanslyIcon from "./media/FanslyIcon";
+import { ReactComponent as FanslyIcon } from "./media/Fansly-icon-1.svg";
+import AdultConfirmation from "./AdultConfirmModal";
 
 export default function NestedList() {
   const [openSoftware, setOpenSoftware] = React.useState(false);
@@ -27,8 +31,8 @@ export default function NestedList() {
   const [autoCompleteOpen, setAutoCompleteOpen] = useState(false);
   const [openAffiliate, setOpenAffiliate] = useState(false);
   const [pokename, setPokeName] = useState("");
-  const handleClickSoftware = () => setOpenSoftware(!openSoftware);
-  const handleClickAffiliate = () => setOpenAffiliate(!openAffiliate);
+  const [spicyOpen, setSpicyOpen] = useState(false);
+  const [adultConfirmOpen, setAdultConfirmOpen] = useState(false);
   const [currentlyListening, setCurrentlyListening] = React.useState({});
   const [currentPlaylist, setCurrentPlaylist] = React.useState({});
   const handleClickSpotify = () => {
@@ -48,6 +52,14 @@ export default function NestedList() {
 
   const [autoCompleteText, setAutoCompleteText] = useState("");
   const [isSupporter] = useState(localStorage.usertype === "supporter");
+
+  const checkConfirmAdultContent = () => {
+    if (localStorage.adultConfirmed === "true") {
+      setSpicyOpen(!spicyOpen);
+    } else {
+      setAdultConfirmOpen(true);
+    }
+  };
 
   return (
     <List
@@ -69,11 +81,11 @@ export default function NestedList() {
         href="https://www.tiktok.com/@exmachinaexmilitary"
         icon={<Icon icon="cib:tiktok" style={{ "font-size": "1.5em" }} />}
       />
-
       <LinkListItem
         primary="Instagram"
         component="a"
         href="https://www.instagram.com/pogofwar/"
+        AdultConfirmation
         icon={<InstagramIcon />}
       />
       <LinkListItem
@@ -159,7 +171,7 @@ export default function NestedList() {
       <LinkListItem
         primary="Software Developer stuff"
         // component=""
-        onClick={handleClickSoftware}
+        onClick={() => setOpenSoftware(!openSoftware)}
         // href="https://discord.gg/covenoftheredbear"
         icon={<CodeIcon />}
       >
@@ -253,11 +265,11 @@ export default function NestedList() {
       <LinkListItem
         primary="Buy Stuff that's in my videos I guess if you really want to"
         // component=""
-        onClick={handleClickAffiliate}
+        onClick={() => setOpenAffiliate(!openAffiliate)}
         // href="https://discord.gg/covenoftheredbear"
         icon={<Icon icon="mdi:cash" style={{ "font-size": "1.5em" }} />}
       >
-        {openSoftware ? <ExpandLess /> : <ExpandMore />}
+        {openAffiliate ? <ExpandLess /> : <ExpandMore />}
       </LinkListItem>
       <Collapse in={openAffiliate} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
@@ -279,6 +291,62 @@ export default function NestedList() {
             href="https://www.amazon.com/gp/product/B00HVLUR86/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00HVLUR86&linkCode=as2&tag=exmachina00-20&linkId=15bd3767f753ad1ddbbc8ebe3aae10f1"
             icon={
               <Icon icon="mdi:headphones" style={{ "font-size": "1.5em" }} />
+            }
+            sx={{ pl: 4 }}
+          />
+        </List>
+      </Collapse>
+      <AdultConfirmation
+        adultConfirmOpen={adultConfirmOpen}
+        setAdultConfirmOpen={setAdultConfirmOpen}
+      >
+        <LinkListItem
+          primary="Adult Content"
+          // component=""
+          onClick={() => checkConfirmAdultContent()}
+          // href="https://discord.gg/covenoftheredbear"
+          icon={
+            <Icon
+              icon="fxemoji:nooneunder18symbol"
+              style={{ "font-size": "1.5em" }}
+            />
+          }
+        >
+          {spicyOpen ? <ExpandLess /> : <ExpandMore />}
+        </LinkListItem>
+      </AdultConfirmation>
+      <Collapse in={spicyOpen} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <LinkListItem
+            primary="Spicy Insta"
+            component="a"
+            href="https://www.instagram.com/exmachinaexmilitary/"
+            icon={<InstagramIcon />}
+            sx={{ pl: 4 }}
+          />
+          <LinkListItem
+            primary="OnlyFans"
+            component="a"
+            href="https://onlyfans.com/exmachinaexmilitary"
+            icon={
+              <Icon
+                icon="simple-icons:onlyfans"
+                style={{ "font-size": "1.5em" }}
+              />
+            }
+            sx={{ pl: 4 }}
+          />
+          <LinkListItem
+            primary="Fansly"
+            component="a"
+            href="https://fansly.com/Exmachinaexmilitary"
+            icon={
+              <SvgIcon>
+                <FanslyIcon
+                  className="iconify iconify--simple-icons"
+                  style={{ "font-size": "1.5em", color: "inherit" }}
+                />
+              </SvgIcon>
             }
             sx={{ pl: 4 }}
           />
