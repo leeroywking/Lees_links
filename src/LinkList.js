@@ -78,7 +78,7 @@ export default function NestedList() {
       <LinkListItem
         primary="New TikTok"
         component="a"
-        href="https://www.tiktok.com/@exmachinae.xmilitary"
+        href="https://www.tiktok.com/@exmachina.exmilitary"
         icon={<Icon icon="cib:tiktok" style={{ "font-size": "1.5em" }} />}
       />
       <LinkListItem
