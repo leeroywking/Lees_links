@@ -76,23 +76,23 @@ export default function NestedList() {
       }
     >
       <LinkListItem
-        primary="New TikTok"
-        component="a"
-        href="https://www.tiktok.com/@exmachina.exmilitary"
-        icon={<Icon icon="cib:tiktok" style={{ "font-size": "1.5em" }} />}
-      />
-      <LinkListItem
-        primary="Nerdy TikTok (Marvel and software development)"
-        component="a"
-        href="https://www.tiktok.com/@exmachina.nerdy"
-        icon={<Icon icon="cib:tiktok" style={{ "font-size": "1.5em" }} />}
-      />
-      <LinkListItem
-        primary="Old TikTok (Permanently banned)"
+        primary="Main TikTok"
         component="a"
         href="https://www.tiktok.com/@exmachinaexmilitary"
         icon={<Icon icon="cib:tiktok" style={{ "font-size": "1.5em" }} />}
       />
+      <LinkListItem
+        primary="Backup TikTok"
+        component="a"
+        href="https://www.tiktok.com/@exmachina.exmilitary"
+        icon={<Icon icon="cib:tiktok" style={{ "font-size": "1.5em" }} />}
+      />
+      {/* <LinkListItem
+        primary="Nerdy TikTok (Marvel and software development)"
+        component="a"
+        href="https://www.tiktok.com/@exmachina.nerdy"
+        icon={<Icon icon="cib:tiktok" style={{ "font-size": "1.5em" }} />}
+      /> */}
       <LinkListItem
         primary="Instagram"
         component="a"
