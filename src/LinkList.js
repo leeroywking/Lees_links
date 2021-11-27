@@ -308,25 +308,27 @@ export default function NestedList() {
           />
         </List>
       </Collapse>
-      <AdultConfirmation
-        adultConfirmOpen={adultConfirmOpen}
-        setAdultConfirmOpen={setAdultConfirmOpen}
-      >
-        <LinkListItem
-          primary="Adult Content"
-          // component=""
-          onClick={() => checkConfirmAdultContent()}
-          // href="https://discord.gg/covenoftheredbear"
-          icon={
-            <Icon
-              icon="fxemoji:nooneunder18symbol"
-              style={{ "font-size": "1.5em" }}
-            />
-          }
+      {localStorage.cleanmode !== "true" ? (
+        <AdultConfirmation
+          adultConfirmOpen={adultConfirmOpen}
+          setAdultConfirmOpen={setAdultConfirmOpen}
         >
-          {spicyOpen ? <ExpandLess /> : <ExpandMore />}
-        </LinkListItem>
-      </AdultConfirmation>
+          <LinkListItem
+            primary="Adult Content"
+            // component=""
+            onClick={() => checkConfirmAdultContent()}
+            // href="https://discord.gg/covenoftheredbear"
+            icon={
+              <Icon
+                icon="fxemoji:nooneunder18symbol"
+                style={{ "font-size": "1.5em" }}
+              />
+            }
+          >
+            {spicyOpen ? <ExpandLess /> : <ExpandMore />}
+          </LinkListItem>
+        </AdultConfirmation>
+      ) : null}
       <Collapse in={spicyOpen} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <LinkListItem

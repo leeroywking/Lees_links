@@ -11,6 +11,10 @@ export default function App() {
     localStorage.usertype = "supporter";
     window.location.replace("/");
   }
+  if (params.cleanmode === "true") {
+    localStorage.cleanmode = "true";
+    window.location.replace("/");
+  }
   console.log(params);
 
   if (
