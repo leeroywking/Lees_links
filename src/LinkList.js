@@ -107,6 +107,15 @@ export default function NestedList() {
         icon={<TwitterIcon />}
       />
       <LinkListItem
+        primary="Youtube"
+        component="a"
+        href="https://www.youtube.com/channel/UCH6DIWNQ076bWdjsY9svaGQ"
+        icon={<Icon
+          icon="mdi:youtube"
+          style={{ "font-size": "1.5em" }}
+        />}
+      />
+      <LinkListItem
         primary="Spotify"
         // component="a"
         href="https://open.spotify.com/user/12138314850?si=bc8720525d83485c"
@@ -174,12 +183,12 @@ export default function NestedList() {
         href="https://www.twitch.tv/einraw"
         icon={<Icon icon="mdi:twitch" style={{ "font-size": "1.5em" }} />}
       />
-      {/* <LinkListItem
-        primary="Coven of the Red Bear"
-        component="a"            mdi:microphone-variant
+      <LinkListItem
+        primary="Coven of the Red Bear (Discord)"
+        component="a"
         href="https://discord.gg/covenoftheredbear"
         icon={<Icon icon="mdi:discord" style={{ "font-size": "1.5em" }} />}
-      /> */}
+      />
       <LinkListItem
         primary="Software Developer stuff"
         // component=""
