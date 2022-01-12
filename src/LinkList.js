@@ -369,7 +369,7 @@ export default function NestedList() {
           <LinkListItem
             primary="Fansly"
             component="a"
-            href="https://fansly.com/Exmachinaexmilitary"
+            href="https://fans.ly/r/Exmachina"
             icon={
               <SvgIcon>
                 <FanslyIcon
