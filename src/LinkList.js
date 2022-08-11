@@ -116,6 +116,17 @@ export default function NestedList() {
         />}
       />
       <LinkListItem
+        primary="Thicc Systems Store"
+        component="a"
+        href="https://thicc-systems.myshopify.com/"
+        icon={
+          <Icon
+            icon="fontisto:shopify"
+            style={{"font-size": "1.5em"}}
+            />
+        }
+      />
+      <LinkListItem
         primary="Spotify"
         // component="a"
         href="https://open.spotify.com/user/12138314850?si=bc8720525d83485c"
