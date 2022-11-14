@@ -87,6 +87,13 @@ export default function NestedList() {
         href="https://www.tiktok.com/@exmachina.exmilitary"
         icon={<Icon icon="cib:tiktok" style={{ "font-size": "1.5em" }} />}
       />
+      <LinkListItem
+        primary="Etsy Store (new!)"
+        component="a"
+        href="https://www.etsy.com/shop/ThiccSystems"
+        // icon={<FontAwesomeIcon icon="fab fa-etsy" />}
+        icon={<Icon icon="bxl:etsy" style={{ "font-size": "1.5em" }}/>}
+      />
       {/* <LinkListItem
         primary="Nerdy TikTok (Marvel and software development)"
         component="a"
